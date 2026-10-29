@@ -163,6 +163,15 @@ func TestMakeExpr(t *testing.T) {
 			},
 		},
 		{
+			name: "container_memory_usage_wo_cache",
+			opts: monitoring.QueryOptions{
+				Level:         monitoring.LevelContainer,
+				NamespaceName: "default",
+				PodName:       "elasticsearch-12345",
+				ContainerName: "syscall",
+			},
+		},
+		{
 			name: "pvc_inodes_available",
 			opts: monitoring.QueryOptions{
 				Level:                     monitoring.LevelPVC,
