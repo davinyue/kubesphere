@@ -508,7 +508,7 @@ func (m metricsServer) GetPodLevelNamedMetrics(metrics []string, ts time.Time, o
 			case metricsPodMemoryUsage:
 				if v {
 					memoryQuantity := podMetricsUsge[v1.ResourceMemory]
-					metricValues[metricsPodMemoryUsage].Sample = &monitoring.Point{float64(p.Timestamp.Unix()), float64(memoryQuantity.Value()) / (1024 * 1024)}
+					metricValues[metricsPodMemoryUsage].Sample = &monitoring.Point{float64(p.Timestamp.Unix()), float64(memoryQuantity.Value())}
 				}
 			}
 
@@ -731,7 +731,7 @@ func (m metricsServer) GetPodLevelNamedMetricsOverTime(metrics []string, start, 
 			case metricsPodMemoryUsage:
 				if v {
 					memoryQuantity := podMetricsUsge[v1.ResourceMemory]
-					metricValues[metricsPodMemoryUsage].Series = append(metricValues[metricsPodMemoryUsage].Series, monitoring.Point{float64(p.Timestamp.Unix()), float64(memoryQuantity.Value()) / (1024 * 1024)})
+					metricValues[metricsPodMemoryUsage].Series = append(metricValues[metricsPodMemoryUsage].Series, monitoring.Point{float64(p.Timestamp.Unix()), float64(memoryQuantity.Value())})
 				}
 			}
 		}
